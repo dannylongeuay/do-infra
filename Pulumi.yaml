@@ -1,4 +1,0 @@
-name: do-infra
-runtime:
-  name: python
-description: A minimal DigitalOcean Python Pulumi program

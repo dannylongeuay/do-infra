@@ -1,20 +1,21 @@
 .DEFAULT_GOAL := help
 
+PULUMI_DIR = pulumi/
+
 .PHONY: help
 help: ## View help information
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 .PHONY: asdf-bootstrap
 asdf-bootstrap: ## Install all tools through asdf-vm
-	asdf plugin-add poetry    || asdf install poetry
+	asdf plugin-add nodejs    || asdf install nodejs
 	asdf plugin-add pulumi    || asdf install pulumi
 	asdf plugin-add doctl     || asdf install doctl
 
-.PHONY: shell
-shell: asdf-bootstrap ## Install python dependencies and enter virtual environment
-	poetry install
-	poetry shell
+.PHONY: npm-bootstrap
+npm-bootstrap: asdf-bootstrap ## Install npm packages
+	cd $(PULUMI_DIR) && npm install
 
 .PHONY: preview
-preview: ## Preview pulumi changes
-	pulumi preview
+preview: npm-bootstrap ## Preview pulumi changes
+	pulumi -C $(PULUMI_DIR) preview
