@@ -19,11 +19,11 @@ jobs:
       - run: poetry config virtualenvs.create false
       - run: poetry install
       - run: poetry run pulumi stack select dannylongeuay/do-infra/ndsquared
-      - run: poetry run pulumi preview
+      - run: echo "::set-output name=result::$(poetry run pulumi preview)"
         id: run_preview
       - uses: mshick/add-pr-comment@v1
         with:
-          message: ${{ steps.run_preview.outputs }}
+          message: ${{ steps.run_preview.outputs.result }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: "github-actions[bot]"
       # - run: poetry export -o requirements.txt
