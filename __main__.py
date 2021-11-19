@@ -1,4 +1,4 @@
-"""A DigitalOcean Python Pulumi program"""
+"""Pulumi stack for ndsquared.net"""
 
 import pulumi
 import pulumi_digitalocean as do
