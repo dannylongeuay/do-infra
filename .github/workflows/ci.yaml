@@ -17,7 +17,7 @@ jobs:
         with:
           poetry-version: 1.1.11
       - run: poetry config virtualenvs.create false
-      - run: poetry install --no-dev
+      - run: poetry install
       - run: poetry run pulumi stack select dannylongeuay/do-infra/ndsquared
       - run: poetry run pulumi preview
         id: run_preview
