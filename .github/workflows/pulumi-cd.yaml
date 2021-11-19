@@ -1,0 +1,24 @@
+name: Pulumi CD
+on:
+  push:
+    branches:
+      - main
+jobs:
+  up:
+    name: Up
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16.13.0
+      - run: npm ci
+        working-directory: pulumi
+      - uses: pulumi/actions@v3
+        with:
+          command: up
+          stack-name: prod
+          work-dir: pulumi
+        env:
+          PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+          DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
