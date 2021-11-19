@@ -16,11 +16,9 @@ jobs:
       - uses: abatilo/actions-poetry@v2.1.3
         with:
           poetry-version: 1.1.11
-      - run: poetry config virtualenvs.create false
       - run: poetry install
       - run: poetry run pulumi stack select dannylongeuay/do-infra/ndsquared
-      - name: poetry run pulumi preview"
-        id: run_preview
+      - name: poetry run pulumi preview
         run: |
           PULUMI_PREVIEW=$(poetry run pulumi preview)
           echo "PULUMI_PREVIEW<<EOF" >> $GITHUB_ENV
@@ -29,14 +27,3 @@ jobs:
       - uses: marocchino/sticky-pull-request-comment@v2
         with:
           message: ${{ env.PULUMI_PREVIEW }}
-      # - run: poetry export -o requirements.txt
-      # - run: pip install -r requirements.txt
-      # - uses: pulumi/actions@v3.12.1
-      #   with:
-      #     command: preview
-      #     stack-name: ndsquared
-      #     comment-on-pr: true
-      #     github-token: ${{ secrets.GITHUB_TOKEN }}
-      #   env:
-      #     PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
-      #     DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
