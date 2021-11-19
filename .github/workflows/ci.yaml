@@ -26,7 +26,6 @@ jobs:
           echo "PULUMI_PREVIEW<<EOF" >> $GITHUB_ENV
           echo "$PULUMI_PREVIEW" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
-      - run: echo ${{ env.PULUMI_PREVIEW }}
       - uses: marocchino/sticky-pull-request-comment@v2
         with:
           message: ${{ env.PULUMI_PREVIEW }}
