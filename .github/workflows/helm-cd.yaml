@@ -1,0 +1,26 @@
+name: Helm CD
+on:
+  push:
+    branches:
+      - main
+jobs:
+  helmdeploy:
+    name: Helm Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_TOKEN }}
+      - name: Save DigitalOcean kubeconfig
+        run: doctl kubernetes cluster kubeconfig save ndsquared-prod-sf03
+      - uses: azure/setup-helm@v1
+        with:
+          version: 3.7.1
+      - uses: azure/setup-kubectl@v1
+        with:
+          version: 1.22.2
+      - run: helm dep update helm/core/
+      - run: kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.6.1/cert-manager.crds.yaml
+      - run: helm upgrade core helm/core/ --install --namespace core --create-namespace
