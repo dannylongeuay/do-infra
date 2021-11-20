@@ -17,8 +17,6 @@ jobs:
         with:
           version: 3.7.1
       - uses: azure/setup-kubectl@v1
-        with:
-          version: 1.22.2
       - run: helm plugin install https://github.com/databus23/helm-diff
       - run: helm dep update helm/core/
       - run: kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.6.1/cert-manager.crds.yaml
