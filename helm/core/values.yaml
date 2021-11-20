@@ -1,0 +1,8 @@
+ingress-nginx:
+  controller:
+    service:
+      annotations:
+        external-dns.alpha.kubernetes.io/hostname: ndsquared.net
+external-dns:
+  provider: digitalocean
+  policy: sync
