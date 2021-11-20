@@ -6,8 +6,8 @@ dependencies:
     version: 4.0.6
     repository: https://kubernetes.github.io/ingress-nginx
   - name: external-dns
-    version: 1.6.0
-    repository: https://kubernetes-sigs.github.io/external-dns
+    version: 5.5.0
+    repository: https://charts.bitnami.com/bitnami
   - name: cert-manager
     version: 1.6.1
     repository: https://charts.jetstack.io
