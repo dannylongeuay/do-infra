@@ -17,12 +17,14 @@ jobs:
         with:
           version: 3.7.1
       - uses: azure/setup-kubectl@v1
+        with:
+          version: v1.22.2
       - run: helm plugin install https://github.com/databus23/helm-diff
       - run: helm dep update helm/core/
       - run: kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.6.1/cert-manager.crds.yaml
       - name: Run helm diff
         run: |
-          COMMAND_OUTPUT=$(helm diff upgrade core helm/core/ --install -n core)
+          COMMAND_OUTPUT=$(helm diff upgrade core helm/core/ --install -n core --no-color)
           echo "COMMAND_OUTPUT<<EOF" >> $GITHUB_ENV
           echo "$COMMAND_OUTPUT" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
