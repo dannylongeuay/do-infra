@@ -20,8 +20,11 @@ jobs:
         with:
           version: v1.22.2
       - run: helm plugin install https://github.com/databus23/helm-diff
+        name: Install helm diff plugin
       - run: helm dep update helm/core/
+        name: Download helm charts
       - run: kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.6.1/cert-manager.crds.yaml
+        name: Install cert-manager CRDs
       - name: Run helm diff
         run: |
           COMMAND_OUTPUT=$(helm diff upgrade core helm/core/ --install --namespace core --no-color)

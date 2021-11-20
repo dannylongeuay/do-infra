@@ -5,6 +5,12 @@ const domain = new digitalocean.Domain("ndsq-domain", {
   name: "ndsquared.net",
 });
 
+const www = new digitalocean.DnsRecord("www", {
+  domain: domain.name,
+  type: "CNAME",
+  value: domain.name,
+});
+
 const cluster = new digitalocean.KubernetesCluster("ndsq-cluster", {
   name: "ndsquared-prod-sf03",
   autoUpgrade: true,
