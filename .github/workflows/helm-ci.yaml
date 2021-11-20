@@ -24,7 +24,7 @@ jobs:
       - run: kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.6.1/cert-manager.crds.yaml
       - name: Run helm diff
         run: |
-          COMMAND_OUTPUT=$(helm diff upgrade core helm/core/ --install -n core --no-color)
+          COMMAND_OUTPUT=$(helm diff upgrade core helm/core/ --install --namespace core --no-color --set external-dns.digitalocean.apiToken=blah)
           echo "COMMAND_OUTPUT<<EOF" >> $GITHUB_ENV
           echo "$COMMAND_OUTPUT" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
