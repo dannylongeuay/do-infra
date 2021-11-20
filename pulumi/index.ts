@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as digitalocean from "@pulumi/digitalocean";
 
 // Create a DigitalOcean resource (Domain)
-const domain = new digitalocean.Domain("my-domain", {
+const domain = new digitalocean.Domain("ndsq-domain", {
   name: "ndsquared.net",
 });
 
