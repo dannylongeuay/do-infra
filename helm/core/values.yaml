@@ -5,4 +5,6 @@ ingress-nginx:
         external-dns.alpha.kubernetes.io/hostname: ndsquared.net
 external-dns:
   provider: digitalocean
+  digitalocean:
+    apiToken: notarealtoken
   policy: sync
