@@ -8,7 +8,8 @@ const domain = new digitalocean.Domain("ndsq-domain", {
 const www = new digitalocean.DnsRecord("www", {
   domain: domain.name,
   type: "CNAME",
-  value: domain.name,
+  value: "@",
+  name: "www",
 });
 
 const cluster = new digitalocean.KubernetesCluster("ndsq-cluster", {
