@@ -33,6 +33,7 @@ jobs:
           header: diff
           hide_and_recreate: true
           message: |
+            ## Helm Diff:
             ```
             ${{ env.COMMAND_OUTPUT }}
             ```
