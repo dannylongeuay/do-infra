@@ -23,4 +23,4 @@ jobs:
           version: v1.22.2
       - run: helm dep update helm/core/
       - run: kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.6.1/cert-manager.crds.yaml
-      - run: helm upgrade core helm/core/ --install --namespace core --create-namespace
+      - run: helm upgrade core helm/core/ --install --namespace core --create-namespace --set external-dns.digitalocean.apiToken=${{ secrets.DIGITALOCEAN_TOKEN }}
