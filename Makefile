@@ -19,3 +19,7 @@ npm-bootstrap: asdf-bootstrap ## Install npm packages
 .PHONY: preview
 preview: npm-bootstrap ## Preview pulumi changes
 	pulumi -C $(PULUMI_DIR) preview
+
+.PHONY: up
+up: npm-bootstrap ## Deploy pulumi changes
+	pulumi -C $(PULUMI_DIR) up
