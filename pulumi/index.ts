@@ -12,7 +12,7 @@ const cluster = new digitalocean.KubernetesCluster("ndsq-cluster", {
   version: digitalocean.getKubernetesVersions().then((p) => p.latestVersion),
   nodePool: {
     name: "default",
-    size: digitalocean.DropletSlug.DropletS1VCPU1GB,
+    size: digitalocean.DropletSlug.DropletS1VCPU2GB,
     nodeCount: 3,
   },
   tags: ["ndsquared"],
