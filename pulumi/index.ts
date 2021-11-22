@@ -24,3 +24,20 @@ const cluster = new digitalocean.KubernetesCluster("ndsq-cluster", {
   },
   tags: ["ndsquared"],
 });
+
+const contentBucket = new digitalocean.SpacesBucket("ndsq-content", {
+  region: digitalocean.Region.SFO3,
+  name: "ndsq-content",
+  acl: "public-read",
+});
+
+const contentCert = new digitalocean.Certificate("ndsq-content-cert", {
+  type: "lets_encrypt",
+  domains: ["static.ndsquared.net"],
+});
+
+const contentCdn = new digitalocean.Cdn("ndsq-content-cdn", {
+  origin: contentBucket.bucketDomainName,
+  customDomain: "static.ndsquared.net",
+  certificateName: contentCert.name,
+});
