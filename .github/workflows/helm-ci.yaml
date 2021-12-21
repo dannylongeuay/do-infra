@@ -27,7 +27,7 @@ jobs:
         name: Install cert-manager CRDs
       - name: Run helm diff
         run: |
-          COMMAND_OUTPUT=$(helm diff upgrade core helm/core/ --install --namespace core --no-color)
+          COMMAND_OUTPUT=$(helm diff upgrade core helm/core/ --install --namespace core --no-color -f helm/core/values.yaml --suppress-secrets)
           echo "COMMAND_OUTPUT<<EOF" >> $GITHUB_ENV
           echo "$COMMAND_OUTPUT" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
