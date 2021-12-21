@@ -12,4 +12,4 @@ metrics-server:
   apiService:
     create: true
   extraArgs:
-    kublet-preferred-address-types: InternalIP
+    kubelet-preferred-address-types: InternalIP
