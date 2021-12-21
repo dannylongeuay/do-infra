@@ -8,3 +8,8 @@ external-dns:
   digitalocean:
     apiToken: notarealtoken
   policy: sync
+metrics-server:
+  apiService:
+    create: true
+  extraArgs:
+    - kublet-preferred-address-types=InternalIP
