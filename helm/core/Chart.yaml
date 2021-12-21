@@ -8,6 +8,12 @@ dependencies:
   - name: external-dns
     version: 5.5.0
     repository: https://charts.bitnami.com/bitnami
+  - name: metrics-server
+    version: 5.10.12
+    repository: https://charts.bitnami.com/bitnami
   - name: cert-manager
     version: 1.6.1
     repository: https://charts.jetstack.io
+  - name: sealed-secrets
+    version: 2.0.1
+    repository: https://bitnami-labs.github.io/sealed-secrets

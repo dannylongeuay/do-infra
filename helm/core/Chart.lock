@@ -5,8 +5,14 @@ dependencies:
 - name: external-dns
   repository: https://charts.bitnami.com/bitnami
   version: 5.5.0
+- name: metrics-server
+  repository: https://charts.bitnami.com/bitnami
+  version: 5.10.12
 - name: cert-manager
   repository: https://charts.jetstack.io
   version: v1.6.1
-digest: sha256:60aa9ac8b1b6d003c54eccf12f64280521042b471b50d56a5852e17906ad2c17
-generated: "2021-11-19T23:17:00.555047884-08:00"
+- name: sealed-secrets
+  repository: https://bitnami-labs.github.io/sealed-secrets
+  version: 2.0.1
+digest: sha256:30208d95e641153fc9a8cca49b79cbaa40bc2026492da79266bb09a0468d68bf
+generated: "2021-12-21T13:14:45.463047157-08:00"
