@@ -11,6 +11,7 @@ asdf-bootstrap: ## Install all tools through asdf-vm
 	asdf plugin-add nodejs    || asdf install nodejs
 	asdf plugin-add pulumi    || asdf install pulumi
 	asdf plugin-add doctl     || asdf install doctl
+	asdf plugin-add helm      || asdf install helm
 
 .PHONY: npm-bootstrap
 npm-bootstrap: asdf-bootstrap ## Install npm packages
@@ -23,3 +24,7 @@ preview: npm-bootstrap ## Preview pulumi changes
 .PHONY: up
 up: npm-bootstrap ## Deploy pulumi changes
 	pulumi -C $(PULUMI_DIR) up
+
+.PHONY: deps
+deps: asdf-bootstrap ## Update helm dependencies
+	helm dep update helm/core
