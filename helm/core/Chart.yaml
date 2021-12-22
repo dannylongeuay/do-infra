@@ -15,5 +15,5 @@ dependencies:
     version: 1.6.1
     repository: https://charts.jetstack.io
   - name: sealed-secrets
-    version: 2.0.1
+    version: 2.0.0
     repository: https://bitnami-labs.github.io/sealed-secrets
