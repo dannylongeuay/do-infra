@@ -41,3 +41,9 @@ const contentCdn = new digitalocean.Cdn("ndsq-content-cdn", {
   customDomain: "static.ndsquared.net",
   certificateName: contentCert.name,
 });
+
+const tfstateBucket = new digitalocean.SpacesBucket("tfstate", {
+  region: digitalocean.Region.SFO3,
+  name: "tfstate",
+  acl: "private",
+});
