@@ -42,8 +42,8 @@ const contentCdn = new digitalocean.Cdn("ndsq-content-cdn", {
   certificateName: contentCert.name,
 });
 
-const tfstateBucket = new digitalocean.SpacesBucket("terraform-state", {
+const tfstateBucket = new digitalocean.SpacesBucket("ndsq-terraform-state", {
   region: digitalocean.Region.SFO3,
-  name: "terraform-state",
+  name: "ndsq-terraform-state",
   acl: "private",
 });
