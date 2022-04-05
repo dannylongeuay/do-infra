@@ -11,8 +11,8 @@ dependencies:
 - name: cert-manager
   repository: https://charts.jetstack.io
   version: v1.6.1
-- name: sealed-secrets
-  repository: https://bitnami-labs.github.io/sealed-secrets
-  version: 2.0.0
-digest: sha256:0686742fe0aae0e0a48de7eb30407a2f9e16b4bb4b1234cd1bb7a6581537ab47
-generated: "2021-12-22T06:40:39.887716617-08:00"
+- name: external-secrets
+  repository: https://charts.external-secrets.io
+  version: 0.4.1
+digest: sha256:b5e1e89df25c449992a307da5c86e4985a6da1b2d0abcab702ad5bdb34c5f5b5
+generated: "2022-04-05T11:40:52.230904685-07:00"
